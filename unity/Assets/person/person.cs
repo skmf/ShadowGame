@@ -7,9 +7,10 @@ public class person : MonoBehaviour {
 	public float max_speed;
 	private bool touchingPlatform;
 	
+	private bool background;
 	// Use this for initialization
 	void Start () {
-	
+		background = false;
 	}
 	
 	// Update is called once per frame
@@ -22,17 +23,26 @@ public class person : MonoBehaviour {
 		
 		if(Input.GetButton("Horizontal")) {
 			
-			if (Mathf.Abs(rigidbody.velocity.x) > max_speed) {
-				return;
+			if (Mathf.Abs(rigidbody.velocity.x) < max_speed) {
+				if (Input.GetAxis("Horizontal") > 0) {
+					rigidbody.AddForce(movement_speed, ForceMode.VelocityChange);
+				} else if (Input.GetAxis("Horizontal") < 0) {
+					rigidbody.AddForce(-movement_speed, ForceMode.VelocityChange);
+				}
 			}
-			
-			if (Input.GetAxis("Horizontal") > 0) {
-				rigidbody.AddForce(movement_speed, ForceMode.VelocityChange);
-			} else if (Input.GetAxis("Horizontal") < 0) {
-				rigidbody.AddForce(-movement_speed, ForceMode.VelocityChange);
-			}
-			
 		}
+		
+		if (Input.GetButtonDown("Vertical")) {
+			if (Input.GetAxis("Vertical") > 0 && !background) {
+				transform.Translate(0,0,10);
+				background = true;
+			}
+			else if (Input.GetAxis("Vertical") < 0 && background) {
+				transform.Translate(0,0,-10);
+				background = false;
+			}
+		}
+		
 	}
 	
 	void OnCollisionEnter () {
