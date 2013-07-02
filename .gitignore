@@ -21,20 +21,20 @@ obj/
 Library/*
 !Library/*.asset
  
-/Project/Project.userprefs
-/Project/Assembly-CSharp.csproj
-/Project/Assembly-CSharp.pidb
-/Project/Assembly-CSharp-Editor.csproj
-/Project/Assembly-CSharp-Editor.pidb
-/Project/Assembly-CSharp-Editor-vs.csproj
-/Project/Assembly-CSharp-firstpass.csproj
-/Project/Assembly-CSharp-firstpass.pidb
-/Project/Assembly-CSharp-firstpass-vs.csproj
-/Project/Assembly-CSharp-vs.csproj
-/Project/Assembly-UnityScript-firstpass.pidb
-/Project/Assembly-UnityScript-firstpass.unityproj
-/Project/Assembly-UnityScript-firstpass-vs.unityproj
-/Project/Project.suo
+/unity/unity.userprefs
+/unity/Assembly-CSharp.csproj
+/unity/Assembly-CSharp.pidb
+/unity/Assembly-CSharp-Editor.csproj
+/unity/Assembly-CSharp-Editor.pidb
+/unity/Assembly-CSharp-Editor-vs.csproj
+/unity/Assembly-CSharp-firstpass.csproj
+/unity/Assembly-CSharp-firstpass.pidb
+/unity/Assembly-CSharp-firstpass-vs.csproj
+/unity/Assembly-CSharp-vs.csproj
+/unity/Assembly-UnityScript-firstpass.pidb
+/unity/Assembly-UnityScript-firstpass.unityproj
+/unity/Assembly-UnityScript-firstpass-vs.unityproj
+/unity/unity.suo
 
 
 #################
