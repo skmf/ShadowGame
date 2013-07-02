@@ -59,7 +59,6 @@ public class BackgroundManager : MonoBehaviour {
                 Renderer vMesh = platforms[i].GetComponent("Renderer") as Renderer;
                 vMesh.material = activeMaterial;
             }
-            person.newBackgroundPlatformLayerActive = false;
         }
         else
         {
