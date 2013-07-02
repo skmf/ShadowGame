@@ -5,24 +5,27 @@ public class person : MonoBehaviour {
 	public Vector3 movement_speed;
 	public Vector3 jump_speed;
 	public float max_speed;
-	private bool touchingPlatform;
-	
+    
+    public static bool newBackgroundPlatformLayerActive;
+    public static Vector3 currentPosition;
+    public static float zJumpValue = 7;
+
 	private bool background;
 	// Use this for initialization
 	void Start () {
-		background = false;
+        newBackgroundPlatformLayerActive = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-		if(Input.GetButtonDown("Jump") && touchingPlatform) {
+
+        if (Input.GetButtonDown("Jump"))
+        {
 			rigidbody.AddForce(jump_speed, ForceMode.VelocityChange);
-			touchingPlatform = false;
+            newBackgroundPlatformLayerActive = false;
 		}
 		
 		if(Input.GetButton("Horizontal")) {
-			
 			if (Mathf.Abs(rigidbody.velocity.x) < max_speed) {
 				if (Input.GetAxis("Horizontal") > 0) {
 					rigidbody.AddForce(movement_speed, ForceMode.VelocityChange);
@@ -33,23 +36,22 @@ public class person : MonoBehaviour {
 		}
 		
 		if (Input.GetButtonDown("Vertical")) {
-			if (Input.GetAxis("Vertical") > 0 && !background) {
-				transform.Translate(0,0,10);
-				background = true;
+			if (Input.GetAxis("Vertical") > 0) {
+                transform.Translate(0, 0, zJumpValue);
 			}
-			else if (Input.GetAxis("Vertical") < 0 && background) {
-				transform.Translate(0,0,-10);
-				background = false;
+			else if (Input.GetAxis("Vertical") < 0) {
+                transform.Translate(0, 0, -zJumpValue);
 			}
 		}
 		
 	}
 	
 	void OnCollisionEnter () {
-		touchingPlatform = true;
+        newBackgroundPlatformLayerActive = true;
+        currentPosition = transform.localPosition;
 	}
 
 	void OnCollisionExit () {
-		touchingPlatform = false;
+        newBackgroundPlatformLayerActive = false;
 	}
 }
