@@ -2,7 +2,8 @@ using UnityEngine;
 using System.Collections;
 
 public class person : MonoBehaviour {
-	public Vector3 movement_speed;
+	public Vector3 horizontal_movement_speed;
+    public Vector3 depth_movement_speed;
 	public Vector3 jump_speed;
 	public float max_speed;
     
@@ -14,6 +15,10 @@ public class person : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         newBackgroundPlatformLayerActive = false;
+        
+        horizontal_movement_speed.y = 0; horizontal_movement_speed.z = 0;
+        depth_movement_speed.x = 0; depth_movement_speed.y = 0;
+        jump_speed.x = 0; jump_speed.z = 0;
 	}
 	
 	// Update is called once per frame
@@ -28,25 +33,27 @@ public class person : MonoBehaviour {
 		if(Input.GetButton("Horizontal")) {
 			if (Mathf.Abs(rigidbody.velocity.x) < max_speed) {
 				if (Input.GetAxis("Horizontal") > 0) {
-					rigidbody.AddForce(movement_speed, ForceMode.VelocityChange);
+					rigidbody.AddForce(horizontal_movement_speed, ForceMode.VelocityChange);
 				} else if (Input.GetAxis("Horizontal") < 0) {
-					rigidbody.AddForce(-movement_speed, ForceMode.VelocityChange);
+					rigidbody.AddForce(-horizontal_movement_speed, ForceMode.VelocityChange);
 				}
 			}
 		}
 		
 		if (Input.GetButtonDown("Vertical")) {
 			if (Input.GetAxis("Vertical") > 0) {
-                transform.Translate(0, 0, zJumpValue);
+                rigidbody.AddForce(depth_movement_speed, ForceMode.VelocityChange);
+                //transform.Translate(0, 0, zJumpValue);
 			}
 			else if (Input.GetAxis("Vertical") < 0) {
-                transform.Translate(0, 0, -zJumpValue);
+                rigidbody.AddForce(-depth_movement_speed, ForceMode.VelocityChange);
+                //transform.Translate(0, 0, -zJumpValue);
 			}
 		}
-		
 	}
 	
 	void OnCollisionEnter () {
+        Debug.Log("Collided");
         newBackgroundPlatformLayerActive = true;
         currentPosition = transform.localPosition;
 	}

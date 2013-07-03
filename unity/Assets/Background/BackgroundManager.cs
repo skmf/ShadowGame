@@ -1,6 +1,17 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
+
+//inRange fucntion
+public static class IComparableExtension
+{
+    public static bool InRange<T>(this T value, T from, T to) where T : IComparable<T>
+    {
+        return value.CompareTo(from) >= 1 && value.CompareTo(to) <= -1;
+    }
+}
+
 
 public class BackgroundManager : MonoBehaviour {
 
@@ -30,7 +41,6 @@ public class BackgroundManager : MonoBehaviour {
         }
 	}
 
-    // Update is called once per frame
     void Update() {
         if (person.newBackgroundPlatformLayerActive)
             setActivePlatform(person.currentPosition);
@@ -38,9 +48,9 @@ public class BackgroundManager : MonoBehaviour {
 
     private void SetNextPlatfrom(Transform platform) {
         Vector3 scale = new Vector3(
-			Random.Range(platformMinSize.x, platformMaxSize.x),
-			Random.Range(platformMinSize.y, platformMaxSize.y),
-			Random.Range(platformMinSize.z, platformMaxSize.z));
+			UnityEngine.Random.Range(platformMinSize.x, platformMaxSize.x),
+            UnityEngine.Random.Range(platformMinSize.y, platformMaxSize.y),
+			7);
         
         platform.localPosition = currentPlatformPosition;
         platform.localScale = scale;
@@ -50,7 +60,7 @@ public class BackgroundManager : MonoBehaviour {
     public void setActivePlatform(Vector3 position)
     {
         Debug.Log("setActivePlatform");
-        if (prefab.localPosition.z == position.z)
+        if (position.z.InRange(prefab.localPosition.z - 3.5f,  prefab.localPosition.z + 3.5f))
         {
             Debug.Log("printing in active mat");
             Debug.Log(prefab.localPosition.z);
@@ -64,6 +74,7 @@ public class BackgroundManager : MonoBehaviour {
         {
             Debug.Log("printing in inactive mat");
             Debug.Log(prefab.localPosition.z);
+            Debug.Log(position.z);
             for (int i = 0; i < numberOfPlatforms; i++)
             {
                 Renderer vMesh = platforms[i].renderer;
