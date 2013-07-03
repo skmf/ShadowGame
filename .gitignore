@@ -6,6 +6,11 @@ Temp/
 Library/
 obj/
 *.svd
+
+/Library/FailedAssetImports.txt
+/Library/cache/
+/Library/previews/
+/Library/ScriptAssemblies
  
 #!Library/*.asset
 #!Library/AssetImportState
@@ -18,8 +23,8 @@ obj/
 #!Library/unity default resources
 #!Library/unity editor resources
  
-Library/*
-!Library/*.asset
+#Library/*
+#!Library/*.asset
  
 /unity/unity.userprefs
 /unity/Assembly-CSharp.csproj

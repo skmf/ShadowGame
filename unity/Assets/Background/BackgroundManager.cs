@@ -56,7 +56,7 @@ public class BackgroundManager : MonoBehaviour {
             Debug.Log(prefab.localPosition.z);
             for (int i = 0; i < numberOfPlatforms; i++)
             {
-                Renderer vMesh = platforms[i].GetComponent("Renderer") as Renderer;
+                Renderer vMesh = platforms[i].renderer;
                 vMesh.material = activeMaterial;
             }
         }
@@ -66,7 +66,7 @@ public class BackgroundManager : MonoBehaviour {
             Debug.Log(prefab.localPosition.z);
             for (int i = 0; i < numberOfPlatforms; i++)
             {
-                Renderer vMesh = platforms[i].GetComponent("Renderer") as Renderer;
+                Renderer vMesh = platforms[i].renderer;
                 vMesh.material = inActiveMaterial;
             }
         }
