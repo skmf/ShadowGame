@@ -2,38 +2,22 @@
 ## Unity
 #################
 
-Temp/
-Library/
-obj/
-*.svd
+*.sln
+*.userprefs
+*.csproj
+*.pidb
+*.unityproj
+.DS_Store
+unity/Library/FailedAssetImports.txt
+unity/Library/cache/
+unity/Library/previews/
+unity/Library/ScriptAssemblies
+unity/obj
+unity/Temp
  
-#!Library/*.asset
-#!Library/AssetImportState
-#!Library/AssetVersioning.db
-#!Library/BuildPlayer.prefs
-#!Library/ScriptMapper
-#!Library/assetservercachev3
-#!Library/expandedItems
-#!Library/guidmapper
-#!Library/unity default resources
-#!Library/unity editor resources
- 
-Library/*
-!Library/*.asset
- 
-/unity/unity.userprefs
-/unity/Assembly-CSharp.csproj
-/unity/Assembly-CSharp.pidb
-/unity/Assembly-CSharp-Editor.csproj
-/unity/Assembly-CSharp-Editor.pidb
-/unity/Assembly-CSharp-Editor-vs.csproj
-/unity/Assembly-CSharp-firstpass.csproj
-/unity/Assembly-CSharp-firstpass.pidb
-/unity/Assembly-CSharp-firstpass-vs.csproj
-/unity/Assembly-CSharp-vs.csproj
-/unity/Assembly-UnityScript-firstpass.pidb
-/unity/Assembly-UnityScript-firstpass.unityproj
-/unity/Assembly-UnityScript-firstpass-vs.unityproj
+unity/Library/*
+!unity/Library/*.asset
+
 /unity/unity.suo
 
 
